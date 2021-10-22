@@ -9,18 +9,19 @@ import { User } from './interfaces/auth.interface';
 
 @Injectable()
 export class AuthService {
-  
+
   constructor(
     @InjectModel('User') private userModel: Model<User>,
     private jwtService: JwtService,
   ) {}
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
-    const { username, password } = authCredentialsDto;
+    const { username, email, password, confirmPassword } = authCredentialsDto;
 
+    const hashPassword = await bcrypt.hash(confirmPassword, 10);
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new this.userModel({ username, password: hashedPassword });
+    const user = new this.userModel({ username, email, password: hashedPassword, confirmPassword: hashPassword });
 
     try {
       await user.save();
