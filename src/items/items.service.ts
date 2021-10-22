@@ -19,9 +19,9 @@ export class ItemsService {
     return item;
   }
 
-  async create(createItemDto: CreateItemDto) {
-    const newItem = await new this.itemModel(createItemDto);
-    return newItem.save();
+  async create(createItemDto: CreateItemDto): Promise<Item> {
+    const newItem = new this.itemModel(createItemDto);
+    return await newItem.save();
   }
 
   async update(id: number, updateItemDto: UpdateItemDto): Promise<Item> {

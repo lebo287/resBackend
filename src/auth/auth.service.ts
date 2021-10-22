@@ -9,9 +9,7 @@ import { User } from './interfaces/auth.interface';
 
 @Injectable()
 export class AuthService {
-  find(id: any, product: AuthCredentialsDto): Promise<any[]> {
-    throw new Error('Method not implemented.');
-  }
+  
   constructor(
     @InjectModel('User') private userModel: Model<User>,
     private jwtService: JwtService,
