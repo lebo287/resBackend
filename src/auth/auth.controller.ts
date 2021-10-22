@@ -24,7 +24,8 @@ export class AuthController {
     @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto,
   ): Promise<any> {
     let results = await this.authService.signUp(authCredentialsDto);
-    return { message: 'Successfully Registered' };
+    return results;
+    //return { message: 'Successfully Registered' };
   }
 
   @UseGuards(LocalAuthGuard)
