@@ -26,7 +26,7 @@ export class ItemsService {
 
   async update(id: number, updateItemDto: UpdateItemDto): Promise<Item> {
     const updatedItem = await this.itemModel
-    .findByIdAndUpdate(id, CreateItemDto, { new: true });
+    .findByIdAndUpdate(id, updateItemDto, { new: true });
       return updatedItem;
   }
 
