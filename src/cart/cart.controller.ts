@@ -29,7 +29,7 @@ export class CartController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: any) {
-    return this.cartService.remove(id);
+  delete(@Param('id') id: any) {
+    return this.cartService.delete(id);
   }
 }
